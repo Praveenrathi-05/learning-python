@@ -1,26 +1,25 @@
 def main():
-    file_name = input("File name: ").lower().strip()
-    seperator_count = file_name.count('.')
-    if seperator_count == 1:
-        name , extension = file_name.split(".")
-        print(file_type(extension, name if extension == "txt" else ""))
-    elif seperator_count == 2:
-        name , _ , extension = file_name.split(".")
-        print(file_type(extension, name if extension == "txt" else ""))
-    else:
-        print("application/octet-stream")
+    file_name = input("File name: ").strip().lower()
 
-def file_type(extension, name = ""):
-    if extension == "jpg":
-        extension = "jpeg"
+    if "." in file_name:
+        extension = file_name.rsplit(".", 1)[1]
+    else:
+        extension = ""
+
     match extension:
-        case "gif" | "jpeg" | "png":
-            return f"image/{extension}"
-        case "pdf" | "zip" :
-            return f"application/{extension}"
+        case "gif":
+            print("image/gif")
+        case "jpg" | "jpeg":
+            print("image/jpeg")
+        case "png":
+            print("image/png")
+        case "pdf":
+            print("application/pdf")
+        case "zip":
+            print("application/zip")
         case "txt":
-            return f"text/{name}"
+            print("text/plain")
         case _:
-            return "application/octet-stream"
+            print("application/octet-stream")
 
 main()
