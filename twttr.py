@@ -1,7 +1,12 @@
-text = input("Input: ")
-vowels = "aeiou"
-short_str = "Output: "
-for char in text:
-    if char.lower() not in vowels:
-        short_str += char
-print(short_str)
+def shorten(word):
+    vowels = "aeiou"
+    return "".join(c for c in word if c.lower() not in vowels)
+
+
+def main():
+    word = input("Input: ")
+    print(f"Output: {shorten(word)}")
+
+
+if __name__ == "__main__":
+    main()
